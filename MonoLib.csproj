@@ -9,4 +9,28 @@
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="*" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  
+    <!-- Identifiers -->
+    <PackageId>MonoLib</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Emmett Campbell</Authors>
+
+    <!-- Descriptions & Info -->
+    <Description>A general purpose library for MonoGame--primarily for Graphics.</Description>
+    <PackageTags>c#; utility;</PackageTags>
+    <PackageProjectUrl>https://github.com/Veryangryrocks/MonoLib/tree/main</PackageProjectUrl>
+
+    <!-- Licensing and Readme -->
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="LICENSE.txt" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
 </Project>
