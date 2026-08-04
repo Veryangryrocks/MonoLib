@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MonoLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9622b2e6a47ac1986609644d71d826ead1df836a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonoLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonoLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

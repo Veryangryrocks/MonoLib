@@ -14,5 +14,5 @@ Implements:
     + Present
     + Raster
   * Fullscreen functionality
- - Util
+- Util
   * Degrees and Radians
