@@ -11,10 +11,10 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Emmett Campbell")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A general purpose library for MonoGame--primarily for Graphics.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1635eecfb568f973b67f5fb2f993fc6291a69db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4b8176a1e0eed2d6b0501749d8e212cc353f65f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonoLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonoLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MonoLib</id>
+    <version>1.0.0</version>
+    <authors>Emmett Campbell</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/Veryangryrocks/MonoLib/tree/main</projectUrl>
+    <description>A general purpose library for MonoGame--primarily for Graphics.</description>
+    <tags>c# utility</tags>
+    <repository type="git" commit="d4b8176a1e0eed2d6b0501749d8e212cc353f65f" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="MonoGame.Framework.DesktopGL" version="3.8.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\bin\Release\net8.0\MonoLib.dll" target="lib\net8.0\MonoLib.dll" />
+    <file src="C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\README.md" target="\README.md" />
+    <file src="C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\LICENSE.txt" target="\LICENSE.txt" />
+  </files>
+</package>

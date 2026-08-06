@@ -22,3 +22,16 @@ C:\Users\campb\Documents\Programming\MonoGame\MonoLibProject\MonoLib\obj\Debug\n
 C:\Users\campb\Documents\Programming\MonoGame\MonoLibProject\MonoLib\obj\Debug\net8.0\refint\MonoLib.dll
 C:\Users\campb\Documents\Programming\MonoGame\MonoLibProject\MonoLib\obj\Debug\net8.0\MonoLib.pdb
 C:\Users\campb\Documents\Programming\MonoGame\MonoLibProject\MonoLib\obj\Debug\net8.0\ref\MonoLib.dll
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\bin\Debug\net8.0\MonoLib.deps.json
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\bin\Debug\net8.0\MonoLib.dll
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\bin\Debug\net8.0\MonoLib.pdb
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.csproj.AssemblyReference.cache
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.AssemblyInfoInputs.cache
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.AssemblyInfo.cs
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.csproj.CoreCompileInputs.cache
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.sourcelink.json
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.dll
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\refint\MonoLib.dll
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\MonoLib.pdb
+C:\Users\campb\Documents\Programming\MonoGame\Packages\MonoLib\obj\Debug\net8.0\ref\MonoLib.dll
