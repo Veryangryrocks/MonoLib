@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("A general purpose library for MonoGame--primarily for Graphics.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1+62745a54c4f71d2617c9771eda5add948c444d55")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1+5191b4ddc37f9045e610b571a2315484a71d1345")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonoLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonoLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.1.1.0")]

@@ -8,20 +8,20 @@ public sealed class Animation : IEquatable<Animation>
     public int Length => _spriteArray.Length;
     private static Dictionary<ImmutableArray<Sprite>, Animation> _animationCache = new();
 
-    private Animation(ImmutableArray<Sprite> spriteArray)
+    private Animation(Sprite[] spriteArray)
     {
-        if (spriteArray.IsEmpty)
+        if (spriteArray.Length == 0)
             throw new ArgumentException($"{nameof(spriteArray)} must not be empty.");
-        _spriteArray = spriteArray;
+        _spriteArray = spriteArray.ToImmutableArray();
     }
 
-    public static Animation Get(ImmutableArray<Sprite> spriteArray)
+    public static Animation Get(Sprite[] spriteArray)
     {
-        if (_animationCache.TryGetValue(spriteArray, out Animation cachedAnimation))
+        if (_animationCache.TryGetValue(spriteArray.ToImmutableArray(), out Animation cachedAnimation))
             return cachedAnimation;
         
         Animation animation = new Animation(spriteArray);
-        _animationCache.Add(spriteArray, animation);
+        _animationCache.Add(spriteArray.ToImmutableArray(), animation);
         return animation;
     }
 

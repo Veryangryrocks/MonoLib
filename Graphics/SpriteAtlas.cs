@@ -57,5 +57,59 @@ public sealed class SpriteAtlas
         return Sprite.Resize(spriteRegion);
     }
 
+    public bool TryGetAnimation(string key, out Animation animation, int start = 0, int? end = null, string suffix = "_*", char wildcard = '*')
+    {   
+        animation = default;
+
+        if (end.HasValue && end <= start)
+            return false;
+
+        List<Sprite> sprites = new();
+
+        for (int i = start; ; i++)
+        {
+            if (end.HasValue && i > end.Value)
+                break;
+            
+            string newSuffix = suffix.Replace($"{wildcard}", $"{i}");
+
+            if (!TryGetSprite($"{key}{newSuffix}", out Sprite sprite))
+                break;
+            
+            sprites.Add(sprite);
+        }
+        
+        if (sprites.Count == 0)
+            return false;
+
+        animation = Animation.Get(sprites.ToArray());
+        return true;
+    }
+    public Animation GetAnimation(string key, int start = 0, int? end = null, string suffix = "_*", char wildcard = '*')
+    {
+        if (end.HasValue && end <= start)
+            throw new ArgumentOutOfRangeException(nameof(end));
+
+        List<Sprite> sprites = new();
+
+        for (int i = start; ; i++)
+        {
+            if (end.HasValue && i > end.Value)
+                break;
+            
+            string newSuffix = suffix.Replace($"{wildcard}", $"{i}");
+
+            if (!TryGetSprite($"{key}{newSuffix}", out Sprite sprite))
+                break;
+            
+            sprites.Add(sprite);
+        }
+        
+        if (sprites.Count == 0)
+            throw new InvalidOperationException("No sprites were found.");
+
+        return Animation.Get(sprites.ToArray());
+    }
+
     public override string ToString() => "{Sprite:" + Sprite + " SpriteRegionDict:" + _spriteRegionDict + "}";
 }
