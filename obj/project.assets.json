@@ -291,7 +291,7 @@
     "C:\\Users\\campb\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "restore": {
       "projectUniqueName": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\Packages\\MonoLib\\MonoLib.csproj",
       "projectName": "MonoLib",

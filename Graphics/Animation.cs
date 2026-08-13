@@ -4,27 +4,17 @@ namespace MonoLib.Graphics;
 
 public sealed class Animation : IEquatable<Animation>
 {
-    private readonly ImmutableArray<Sprite> _spriteArray;
-    public int Length => _spriteArray.Length;
-    private static Dictionary<ImmutableArray<Sprite>, Animation> _animationCache = new();
-
-    private Animation(Sprite[] spriteArray)
+    private readonly Sprite[] _sprites;
+    public int Length => _sprites.Length;
+    public static readonly Dictionary<string, Animation> Cache = new();
+    public Animation(Sprite[] sprites)
     {
-        if (spriteArray.Length == 0)
-            throw new ArgumentException($"{nameof(spriteArray)} must not be empty.");
-        _spriteArray = spriteArray.ToImmutableArray();
-    }
-
-    public static Animation Get(Sprite[] spriteArray)
-    {
-        if (_animationCache.TryGetValue(spriteArray.ToImmutableArray(), out Animation cachedAnimation))
-            return cachedAnimation;
+        ArgumentNullException.ThrowIfNull(sprites);
+        if (sprites.Length == 0)
+            throw new ArgumentException(nameof(sprites));
         
-        Animation animation = new Animation(spriteArray);
-        _animationCache.Add(spriteArray.ToImmutableArray(), animation);
-        return animation;
+        _sprites = sprites;
     }
-
     public bool TryGetSprite(int index, out Sprite sprite)
     {
         sprite = null;
@@ -32,7 +22,7 @@ public sealed class Animation : IEquatable<Animation>
         if (index < 0 || index >= Length)
             return false;
         
-        sprite = _spriteArray[index];
+        sprite = _sprites[index];
         return true;
     }
     public Sprite GetSprite(int index)
@@ -40,12 +30,13 @@ public sealed class Animation : IEquatable<Animation>
         if (index < 0 || index >= Length)
             throw new ArgumentOutOfRangeException(nameof(index));
         
-        return _spriteArray[index];
+        return _sprites[index];
     }
-    
+  
     public int GetIndex(int elapsedFrames, int duration) => elapsedFrames / (duration / Length) % Length;
     public static int GetIndex(int elapsedFrames, int duration, int length) => elapsedFrames / (duration / length) % length;
     public Sprite GetSprite(int elapsedFrames, int duration) => GetSprite(GetIndex(elapsedFrames, duration));
+    public override string ToString() => "{Sprites:" + _sprites + " }";
 
     // IEquatable
     public bool Equals(Animation other)
@@ -54,10 +45,10 @@ public sealed class Animation : IEquatable<Animation>
             return false;
         if (ReferenceEquals(this, other))
             return true;
-        return _spriteArray == other._spriteArray;
+        return _sprites == other._sprites;
     }
     public override bool Equals(object obj) => Equals(obj as Animation);
-    public override int GetHashCode() => _spriteArray.GetHashCode();
+    public override int GetHashCode() => _sprites.GetHashCode();
     public static bool operator ==(Animation left, Animation right)
     {
         if (left is null) 

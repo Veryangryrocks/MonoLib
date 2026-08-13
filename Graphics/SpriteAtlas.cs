@@ -1,48 +1,24 @@
 using System.Collections.Immutable;
 using MonoGameLibrary.Graphics;
+using MonoLib.Content;
 
 namespace MonoLib.Graphics;
 
 public sealed class SpriteAtlas
 {
     public readonly Sprite Sprite;
-    private readonly ImmutableDictionary<string, SpriteRegion> _spriteRegionDict;
-    private static Dictionary<Sprite, SpriteAtlas> _spriteAtlasCache = new();
-    public SpriteAtlas(Sprite sprite, Dictionary<string, SpriteRegion> spriteRegionDict)
+    private readonly Dictionary<string, SpriteRegion> _spriteRegions;
+    public static readonly Dictionary<string, SpriteAtlas> Cache = new();
+    public SpriteAtlas(Sprite sprite, Dictionary<string, SpriteRegion> spriteRegions)
     {
         Sprite = sprite;
-        _spriteRegionDict = spriteRegionDict.ToImmutableDictionary();
+        _spriteRegions = spriteRegions;
     }
-
-    public static void Add(Sprite sprite, Dictionary<string, SpriteRegion> spriteRegionDict)
-    {
-        _spriteAtlasCache.Add(sprite, new SpriteAtlas(sprite, spriteRegionDict));
-    }
-
-    public static bool TryGet(Sprite sprite, out SpriteAtlas spriteAtlas)
-    {
-        spriteAtlas = default;
-
-        if (_spriteAtlasCache.TryGetValue(sprite, out SpriteAtlas cachedSpriteAtlas))
-        {
-            spriteAtlas = cachedSpriteAtlas;
-            return true;
-        }
-        return false;
-    }
-    public static SpriteAtlas Get(Sprite sprite)
-    {
-        if (!_spriteAtlasCache.ContainsKey(sprite))
-            throw new KeyNotFoundException(nameof(sprite));
-        
-        return _spriteAtlasCache[sprite];
-    }
-
     public bool TryGetSprite(string key, out Sprite sprite)
     {
         sprite = default;
 
-        if (!_spriteRegionDict.TryGetValue(key, out SpriteRegion spriteRegion))
+        if (!_spriteRegions.TryGetValue(key, out SpriteRegion spriteRegion))
             return false;
             
         sprite = Sprite.Resize(spriteRegion);
@@ -50,13 +26,12 @@ public sealed class SpriteAtlas
     }
     public Sprite GetSprite(string key)
     {
-        if (!_spriteRegionDict.ContainsKey(key))
+        if (!_spriteRegions.ContainsKey(key))
             throw new KeyNotFoundException(nameof(key));
         
-        SpriteRegion spriteRegion = _spriteRegionDict[key];
+        SpriteRegion spriteRegion = _spriteRegions[key];
         return Sprite.Resize(spriteRegion);
     }
-
     public bool TryGetAnimation(string key, out Animation animation, int start = 0, int? end = null, string suffix = "_*", char wildcard = '*')
     {   
         animation = default;
@@ -82,7 +57,7 @@ public sealed class SpriteAtlas
         if (sprites.Count == 0)
             return false;
 
-        animation = Animation.Get(sprites.ToArray());
+        animation = new Animation(sprites.ToArray());
         return true;
     }
     public Animation GetAnimation(string key, int start = 0, int? end = null, string suffix = "_*", char wildcard = '*')
@@ -108,8 +83,11 @@ public sealed class SpriteAtlas
         if (sprites.Count == 0)
             throw new InvalidOperationException("No sprites were found.");
 
-        return Animation.Get(sprites.ToArray());
+        return new Animation(sprites.ToArray());
     }
-
-    public override string ToString() => "{Sprite:" + Sprite + " SpriteRegionDict:" + _spriteRegionDict + "}";
+    public static void AddFromPaths(string key, string spriteRelativePath, string spriteRegionsRelativePath)
+    {
+        Cache.Add(key, new SpriteAtlas(Sprite.Get(spriteRelativePath), JsonCache.Get<Dictionary<string, SpriteRegion>>(spriteRegionsRelativePath)));
+    }
+    public override string ToString() => "{Sprite:" + Sprite + " SpriteRegions:" + _spriteRegions + "}";
 }

@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "MonoLib/1.0.0": {
+      "MonoLib/1.2.0": {
         "dependencies": {
           "MonoGame.Framework.DesktopGL": "3.8.5"
         },
@@ -131,7 +131,7 @@
     }
   },
   "libraries": {
-    "MonoLib/1.0.0": {
+    "MonoLib/1.2.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
