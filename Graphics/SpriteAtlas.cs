@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using MonoGameLibrary.Graphics;
 using MonoLib.Content;
+using MonoLib.Util;
 
 namespace MonoLib.Graphics;
 
@@ -8,7 +9,6 @@ public sealed class SpriteAtlas
 {
     public readonly Sprite Sprite;
     private readonly Dictionary<string, SpriteRegion> _spriteRegions;
-    public static readonly Dictionary<string, SpriteAtlas> Cache = new();
     public SpriteAtlas(Sprite sprite, Dictionary<string, SpriteRegion> spriteRegions)
     {
         Sprite = sprite;
@@ -57,7 +57,7 @@ public sealed class SpriteAtlas
         if (sprites.Count == 0)
             return false;
 
-        animation = new Animation(sprites.ToArray());
+        animation = Animation.Get(sprites.ToArray());
         return true;
     }
     public Animation GetAnimation(string key, int start = 0, int? end = null, string suffix = "_*", char wildcard = '*')
@@ -83,11 +83,7 @@ public sealed class SpriteAtlas
         if (sprites.Count == 0)
             throw new InvalidOperationException("No sprites were found.");
 
-        return new Animation(sprites.ToArray());
-    }
-    public static void AddFromPaths(string key, string spriteRelativePath, string spriteRegionsRelativePath)
-    {
-        Cache.Add(key, new SpriteAtlas(Sprite.Get(spriteRelativePath), JsonCache.Get<Dictionary<string, SpriteRegion>>(spriteRegionsRelativePath)));
+        return Animation.Get(sprites.ToArray());
     }
     public override string ToString() => "{Sprite:" + Sprite + " SpriteRegions:" + _spriteRegions + "}";
 }

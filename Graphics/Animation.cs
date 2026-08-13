@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using MonoLib.Util;
 
 namespace MonoLib.Graphics;
 
@@ -6,18 +7,28 @@ public sealed class Animation : IEquatable<Animation>
 {
     private readonly Sprite[] _sprites;
     public int Length => _sprites.Length;
-    public static readonly Dictionary<string, Animation> Cache = new();
-    public Animation(Sprite[] sprites)
+    private static readonly Dictionary<Sprite[], Animation> _cache = new(new ArrayEqualityComparer<Sprite>());
+    private Animation(Sprite[] sprites)
     {
         ArgumentNullException.ThrowIfNull(sprites);
+
         if (sprites.Length == 0)
             throw new ArgumentException(nameof(sprites));
         
         _sprites = sprites;
     }
+    public static Animation Get(Sprite[] sprites)
+    {
+        if (_cache.TryGetValue(sprites, out Animation cachedAnimation))
+            return cachedAnimation;
+        
+        Animation animation = new Animation(sprites);
+        _cache[sprites] = animation;
+        return animation;
+    }
     public bool TryGetSprite(int index, out Sprite sprite)
     {
-        sprite = null;
+        sprite = default;
 
         if (index < 0 || index >= Length)
             return false;
@@ -32,7 +43,6 @@ public sealed class Animation : IEquatable<Animation>
         
         return _sprites[index];
     }
-  
     public int GetIndex(int elapsedFrames, int duration) => elapsedFrames / (duration / Length) % Length;
     public static int GetIndex(int elapsedFrames, int duration, int length) => elapsedFrames / (duration / length) % length;
     public Sprite GetSprite(int elapsedFrames, int duration) => GetSprite(GetIndex(elapsedFrames, duration));
