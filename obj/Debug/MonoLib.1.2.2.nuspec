@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/Veryangryrocks/MonoLib/tree/main</projectUrl>
     <description>A general purpose library for MonoGame--primarily for Graphics.</description>
     <tags>c# utility</tags>
-    <repository type="git" commit="8a344be43ab4d880148afaa1c4ebe43c45bb1dc4" />
+    <repository type="git" commit="66f1b330066c6feef73337e16c0935f27c8c69e3" />
     <dependencies>
       <group targetFramework="net8.0">
         <dependency id="MonoGame.Framework.DesktopGL" version="3.8.5" exclude="Build,Analyzers" />

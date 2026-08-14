@@ -1,7 +1,7 @@
 using System.Text.Json;
 using MonoLib;
 
-namespace MonoLib.Content;
+namespace MonoLib.IO;
 
 public static class JsonCache
 {

@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using MonoLib.Graphics;
 using MonoLib.Util;
 
-namespace MonoGameLibrary.Graphics;
+namespace MonoLib.Graphics.RenderObjects;
 
 public sealed class RenderSprite : RenderObject
 {

@@ -1,6 +1,6 @@
 
 
-namespace MonoLib;
+namespace MonoLib.IO;
 
 public static class PathUtil
 {

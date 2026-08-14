@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGameLibrary.Graphics;
+using MonoLib.Graphics.RenderObjects;
 
 namespace MonoLib.Graphics.Passes;
 

@@ -2,7 +2,6 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGameLibrary.Graphics;
 using MonoLib.Graphics.Passes;
 
 namespace MonoLib.Graphics;

@@ -1,6 +1,4 @@
 using System.Collections.Immutable;
-using MonoGameLibrary.Graphics;
-using MonoLib.Content;
 using MonoLib.Util;
 
 namespace MonoLib.Graphics;

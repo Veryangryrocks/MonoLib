@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Content;
 
-namespace MonoLib;
+namespace MonoLib.IO;
 
 public static class ContentCache
 {
