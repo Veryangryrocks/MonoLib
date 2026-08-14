@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace MonoGameLibrary.Graphics;
+namespace MonoLib.Graphics;
 
 public readonly struct SpriteRegion : IEquatable<SpriteRegion>
 {
