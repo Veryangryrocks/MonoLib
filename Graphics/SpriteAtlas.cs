@@ -1,9 +1,10 @@
+using System.Collections;
 using System.Collections.Immutable;
 using MonoLib.Util;
 
 namespace MonoLib.Graphics;
 
-public sealed class SpriteAtlas
+public sealed class SpriteAtlas : IEnumerable<Sprite>
 {
     public readonly Sprite Sprite;
     private readonly Dictionary<string, SpriteRegion> _spriteRegions;
@@ -84,4 +85,12 @@ public sealed class SpriteAtlas
         return Animation.Get(sprites.ToArray());
     }
     public override string ToString() => "{Sprite:" + Sprite + " SpriteRegions:" + _spriteRegions + "}";
+
+    // IEnumerable
+    public IEnumerator<Sprite> GetEnumerator()
+    {
+        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
+            yield return GetSprite(kvp.Key);
+    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

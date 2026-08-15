@@ -1,9 +1,10 @@
+using System.Collections;
 using System.Collections.Immutable;
 using MonoLib.Util;
 
 namespace MonoLib.Graphics;
 
-public sealed class Animation : IEquatable<Animation>
+public sealed class Animation : IEquatable<Animation>, IEnumerable<Sprite>
 {
     private readonly Sprite[] _sprites;
     public int Length => _sprites.Length;
@@ -66,4 +67,8 @@ public sealed class Animation : IEquatable<Animation>
         return left.Equals(right);
     }
     public static bool operator !=(Animation left, Animation right) => !(left == right);
+
+    // IEnumerable
+    public IEnumerator<Sprite> GetEnumerator() => ((IEnumerable<Sprite>)_sprites).GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
