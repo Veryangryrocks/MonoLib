@@ -4,7 +4,7 @@ using MonoLib.Util;
 
 namespace MonoLib.Graphics;
 
-public sealed class SpriteAtlas : IEnumerable<Sprite>
+public sealed class SpriteAtlas : IEnumerable<Sprite>, IEnumerable<string>, IEnumerable<SpriteRegion>
 {
     public readonly Sprite Sprite;
     private readonly Dictionary<string, SpriteRegion> _spriteRegions;
@@ -87,10 +87,24 @@ public sealed class SpriteAtlas : IEnumerable<Sprite>
     public override string ToString() => "{Sprite:" + Sprite + " SpriteRegions:" + _spriteRegions + "}";
 
     // IEnumerable
-    public IEnumerator<Sprite> GetEnumerator()
+    IEnumerator<Sprite> IEnumerable<Sprite>.GetEnumerator()
     {
         foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
             yield return GetSprite(kvp.Key);
     }
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator<string> IEnumerable<string>.GetEnumerator()
+    {
+        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
+            yield return kvp.Key;
+    }
+    IEnumerator<SpriteRegion> IEnumerable<SpriteRegion>.GetEnumerator()
+    {
+        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
+            yield return kvp.Value;
+    }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
+            yield return GetSprite(kvp.Key);
+    }
 }
