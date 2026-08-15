@@ -8,6 +8,7 @@ public sealed class SpriteAtlas : IEnumerable<Sprite>, IEnumerable<string>, IEnu
 {
     public readonly Sprite Sprite;
     private readonly Dictionary<string, SpriteRegion> _spriteRegions;
+    public int Count => _spriteRegions.Count;
     public SpriteAtlas(Sprite sprite, Dictionary<string, SpriteRegion> spriteRegions)
     {
         Sprite = sprite;
