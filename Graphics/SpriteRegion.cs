@@ -28,6 +28,7 @@ public readonly struct SpriteRegion : IEquatable<SpriteRegion>
         Height = height;
     }
     public static SpriteRegion FromTexture2D(Texture2D texture2D) => new SpriteRegion(0, 0, texture2D.Width, texture2D.Height);
+    public bool Intersects(int x, int y) => Rect.Intersects(new Rectangle(x, y, 1, 1));
     public override string ToString() => "{X:" + X + " Y:" + Y + " Width:" + Width + " Height:" + Height + "}";
 
     // IEquatable

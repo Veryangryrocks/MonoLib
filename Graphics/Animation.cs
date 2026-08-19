@@ -44,8 +44,13 @@ public sealed class Animation : IEquatable<Animation>, IEnumerable<Sprite>
         
         return _sprites[index];
     }
-    public int GetIndex(int elapsedFrames, int duration) => elapsedFrames / (duration / Length) % Length;
-    public static int GetIndex(int elapsedFrames, int duration, int length) => elapsedFrames / (duration / length) % length;
+    public static int GetIndex(int elapsedFrames, int duration, int length)
+    {
+        if (elapsedFrames <= 0)
+            return 0;
+        return elapsedFrames / (duration / length) % length;
+    }
+    public int GetIndex(int elapsedFrames, int duration) => GetIndex(elapsedFrames, duration, Length);
     public Sprite GetSprite(int elapsedFrames, int duration) => GetSprite(GetIndex(elapsedFrames, duration));
     public override string ToString() => "{Sprites:" + _sprites + " }";
 

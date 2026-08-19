@@ -291,13 +291,13 @@
     "C:\\Users\\campb\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.2.5",
+    "version": "1.2.6",
     "restore": {
-      "projectUniqueName": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\Packages\\MonoLib\\MonoLib.csproj",
+      "projectUniqueName": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\MonoLib DEVELOPMENT\\MonoLib\\MonoLib.csproj",
       "projectName": "MonoLib",
-      "projectPath": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\Packages\\MonoLib\\MonoLib.csproj",
+      "projectPath": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\MonoLib DEVELOPMENT\\MonoLib\\MonoLib.csproj",
       "packagesPath": "C:\\Users\\campb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\Packages\\MonoLib\\obj\\",
+      "outputPath": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\MonoLib DEVELOPMENT\\MonoLib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\campb\\AppData\\Roaming\\NuGet\\NuGet.Config"

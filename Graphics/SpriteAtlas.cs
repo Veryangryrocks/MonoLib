@@ -4,21 +4,21 @@ using MonoLib.Util;
 
 namespace MonoLib.Graphics;
 
-public sealed class SpriteAtlas : IEnumerable<Sprite>, IEnumerable<string>, IEnumerable<SpriteRegion>
+public sealed class SpriteAtlas
 {
     public readonly Sprite Sprite;
-    private readonly Dictionary<string, SpriteRegion> _spriteRegions;
-    public int Count => _spriteRegions.Count;
+    public readonly Dictionary<string, SpriteRegion> SpriteRegions;
+    public int Count => SpriteRegions.Count;
     public SpriteAtlas(Sprite sprite, Dictionary<string, SpriteRegion> spriteRegions)
     {
         Sprite = sprite;
-        _spriteRegions = spriteRegions;
+        SpriteRegions = spriteRegions;
     }
     public bool TryGetSprite(string key, out Sprite sprite)
     {
         sprite = default;
 
-        if (!_spriteRegions.TryGetValue(key, out SpriteRegion spriteRegion))
+        if (!SpriteRegions.TryGetValue(key, out SpriteRegion spriteRegion))
             return false;
             
         sprite = Sprite.Resize(spriteRegion);
@@ -26,11 +26,30 @@ public sealed class SpriteAtlas : IEnumerable<Sprite>, IEnumerable<string>, IEnu
     }
     public Sprite GetSprite(string key)
     {
-        if (!_spriteRegions.ContainsKey(key))
-            throw new KeyNotFoundException(nameof(key));
-        
-        SpriteRegion spriteRegion = _spriteRegions[key];
+        SpriteRegion spriteRegion = SpriteRegions[key];
         return Sprite.Resize(spriteRegion);
+    }
+    public bool TryGetSprite(int x, int y, out Sprite sprite)
+    {
+        sprite = default;
+
+        foreach (SpriteRegion spriteRegion in SpriteRegions.Values)
+        {
+            if (spriteRegion.Intersects(x, y))
+            {
+                sprite = Sprite.Resize(spriteRegion);
+                return true;
+            }
+        }
+        return false;
+    }
+    public Sprite GetSprite(int x, int y)
+    {
+        foreach (SpriteRegion spriteRegion in SpriteRegions.Values)
+            if (spriteRegion.Intersects(x, y))
+                return Sprite.Resize(spriteRegion);
+
+        throw new ArgumentException($"No sprite was found at ({x}, {y}).");
     }
     public bool TryGetAnimation(string key, out Animation animation, int start = 0, int? end = null, string suffix = "_*", char wildcard = '*')
     {   
@@ -85,27 +104,5 @@ public sealed class SpriteAtlas : IEnumerable<Sprite>, IEnumerable<string>, IEnu
 
         return Animation.Get(sprites.ToArray());
     }
-    public override string ToString() => "{Sprite:" + Sprite + " SpriteRegions:" + _spriteRegions + "}";
-
-    // IEnumerable
-    IEnumerator<Sprite> IEnumerable<Sprite>.GetEnumerator()
-    {
-        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
-            yield return GetSprite(kvp.Key);
-    }
-    IEnumerator<string> IEnumerable<string>.GetEnumerator()
-    {
-        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
-            yield return kvp.Key;
-    }
-    IEnumerator<SpriteRegion> IEnumerable<SpriteRegion>.GetEnumerator()
-    {
-        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
-            yield return kvp.Value;
-    }
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        foreach (KeyValuePair<string, SpriteRegion> kvp in _spriteRegions)
-            yield return GetSprite(kvp.Key);
-    }
+    public override string ToString() => "{Sprite:" + Sprite + " SpriteRegions:" + SpriteRegions + "}";
 }

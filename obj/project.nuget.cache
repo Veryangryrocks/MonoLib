@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WRydSCfyNKY=",
+  "dgSpecHash": "6hBP3Blm3Hk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\Packages\\MonoLib\\MonoLib.csproj",
+  "projectFilePath": "C:\\Users\\campb\\Documents\\Programming\\MonoGame\\MonoLib DEVELOPMENT\\MonoLib\\MonoLib.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\campb\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.5.1\\monogame.framework.desktopgl.3.8.5.1.nupkg.sha512",
     "C:\\Users\\campb\\.nuget\\packages\\monogame.library.openal\\1.24.3.4\\monogame.library.openal.1.24.3.4.nupkg.sha512",
